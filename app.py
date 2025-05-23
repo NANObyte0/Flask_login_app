@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 app = Flask(__name__)
-
+app.secret_key = "secret_key_here"
 # Credentials
 users = {
     "Nano": "nano0",
@@ -24,6 +24,8 @@ def login():
 
         #Check Credentiols
         if username in users and users[username] == password:
+            session = ['logged_in'] = True
+            session = ['username'] = username
            return redirect(url_for("welcome", username=username))
         else:
             
@@ -32,6 +34,8 @@ def login():
     return render_template("login.html")
 @app.route("/welcome")
 def welcome():
+    if not session.get('logged_in'):
+     return redirect(url_for("login"))
     username = request.args.get("username")
     return render_template("welcome.html",username=username)
   
