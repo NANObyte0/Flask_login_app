@@ -1,21 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LOGIN2</title>
+    <style>
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            text-align: center;
+            color: cornflowerblue;
+            margin: 0;
+            padding: 30px;
+            border: 5px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
+
 <body>
-    <H2>LOGIN</H2>
-    {% if error %}
-    <p style="color: blueviolet;">{{error}}</p>
-    {% endif %}
-    <form method="POST">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password" required><br><br>
-        <button type="submit"> Click Login</button>
+    <form method="post">
+        {% if error %}
+        <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <label for="username">Login:</label><br>
+        <input type="text" id="username" name="username"><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+
+        <div class="RELbutton">
+            <div class="button0">
+                <button type="submit">Click Me</button><br>
+            </div>
+        </div>
     </form>
 </body>
+
 </html>
